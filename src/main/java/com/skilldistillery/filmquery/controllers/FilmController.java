@@ -29,7 +29,7 @@ public class FilmController {
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView();
 
-		mv.setViewName("WEB-INF/index.jsp");
+		mv.setViewName("index");
 
 		return mv;
 	}
@@ -54,10 +54,10 @@ public class FilmController {
 				mv.addObject("message", "No film found for id: " + id);
 
 			}
-			mv.setViewName("WEB-INF/film.jsp");
+			mv.setViewName("film");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			mv.setViewName("WEB-INF/error.jsp");
+			mv.setViewName("error");
 		}
 
 		return mv;
@@ -70,7 +70,7 @@ public class FilmController {
 	 */
 	@RequestMapping(path = { "addFilmForm.do" })
 	public String showAddFilmForm() {
-		return "WEB-INF/addFilm.jsp"; // Load the form for adding a new film.
+		return "addFilm"; // Load the form for adding a new film.
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class FilmController {
 			e.printStackTrace();
 		}
 
-		mv.setViewName("WEB-INF/addFilm.jsp");
+		mv.setViewName("addFilm");
 		return mv;
 	}
 
@@ -127,14 +127,14 @@ public class FilmController {
 
 	        if (film != null) {
 	            mv.addObject("film", film); 
-	            mv.setViewName("WEB-INF/deleteFilm.jsp");
+	            mv.setViewName("deleteFilm");
 	        } else {
 	            mv.addObject("message", "Film with ID " + id + " not found.");
-	            mv.setViewName("WEB-INF/error.jsp"); 
+	            mv.setViewName("error"); 
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
-	        mv.setViewName("WEB-INF/error.jsp");
+	        mv.setViewName("error");
 	    }
 
 	    return mv;
@@ -167,7 +167,7 @@ public class FilmController {
 	        e.printStackTrace();
 	    }
 
-	    mv.setViewName("WEB-INF/film.jsp");
+	    mv.setViewName("film");
 	    return mv;
 	}
 	
@@ -185,15 +185,15 @@ public class FilmController {
 
 	        if (film != null) {
 	            mv.addObject("film", film); 
-	            mv.setViewName("WEB-INF/updateFilm.jsp"); 
+	            mv.setViewName("updateFilm"); 
 	        } else {
 	            mv.addObject("message", "Film with ID " + id + " not found.");
-	            mv.setViewName("WEB-INF/error.jsp"); 
+	            mv.setViewName("error"); 
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	        mv.addObject("message", "An error occurred while retrieving the film for update.");
-	        mv.setViewName("WEB-INF/error.jsp");
+	        mv.setViewName("error");
 	    }
 
 	    return mv;
@@ -233,7 +233,7 @@ public class FilmController {
 	        e.printStackTrace();
 	    }
 
-	    mv.setViewName("WEB-INF/updateFilm.jsp");
+	    mv.setViewName("updateFilm");
 	    return mv;
 	}
 }
